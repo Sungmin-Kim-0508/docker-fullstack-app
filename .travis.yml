@@ -7,20 +7,20 @@ services:
 
 before_install:
   # '-f'은 Dockerfile.dev 를 사용하기 위해서 Dockerfile.dev 파일명을 명시하기 위해 씀.
-  - docker build -t eddiekim/react-test-app -f ./frontend/Dockerfile.dev ./frontend
+  - docker build -t seongmin082/react-test-app -f ./frontend/Dockerfile.dev ./frontend
 
 script:
-  - docker run -e CI=true eddiekim/react-test-app npm run test
+  - docker run -e CI=true seongmin082/react-test-app npm run test
 
 after_success:
-  - docker build -t eddiekim/docker-frontend  ./frontend
-  - docker build -t eddiekim/docker-backend   ./backend
-  - docker build -t eddiekim/docker-nginx     ./nginx
+  - docker build -t seongmin082/docker-frontend  ./frontend
+  - docker build -t seongmin082/docker-backend   ./backend
+  - docker build -t seongmin082/docker-nginx     ./nginx
 
   # 도커 허브에 로그인
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
   # 도커 허브에 푸시하기
-  - docker push eddiekim/docker-frontend
-  - docker push eddiekim/docker-backend
-  - docker push eddiekim/docker-nginx
+  - docker push seongmin082/docker-frontend
+  - docker push seongmin082/docker-backend
+  - docker push seongmin082/docker-nginx
