@@ -13,6 +13,7 @@ script:
   - docker run -e CI=true seongmin082/react-test-app npm run test
 
 after_success:
+  # 운영버전 이미지 빌드
   - docker build -t seongmin082/docker-frontend  ./frontend
   - docker build -t seongmin082/docker-backend   ./backend
   - docker build -t seongmin082/docker-nginx     ./nginx
@@ -24,3 +25,22 @@ after_success:
   - docker push seongmin082/docker-frontend
   - docker push seongmin082/docker-backend
   - docker push seongmin082/docker-nginx
+
+## 배포 부분
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-fullstack-app"
+  env: "DockerFullstackApp-env"
+
+  bucket_name: "elasticbeanstalk-us-east-2-789250854600"
+
+  # 어플리케이션의 이름과 동일
+  bucket_path: "docker-fullstack-app"
+
+  # 어떤 브랜치에 Push를 할 때 AWS에 배포를 할 것인지.
+  on:
+    branch: master
+  # secret_access_key의 줄과 동일하게 해서 써주기
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
