@@ -38,6 +38,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <div>
+          <h1>환영합니다!</h1>
+        </div>
         <div className="container">
           {lists && lists.map((list, index) => (
             <li key={index}>{list}</li>
