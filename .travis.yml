@@ -29,7 +29,7 @@ after_success:
 ## 배포 부분
 deploy:
   provider: elasticbeanstalk
-  region: "us-east-2b"
+  region: "us-east-2"
   app: "docker-fullstack-app"
   env: "DockerFullstackApp-env"
 
