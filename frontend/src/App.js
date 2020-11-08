@@ -42,9 +42,12 @@ function App() {
           <h1>환영합니다!</h1>
         </div>
         <div className="container">
-          {lists && lists.map((list, index) => (
-            <li key={index}>{list}</li>
-          ))}
+          {lists && lists.map((list, index) => {
+            console.log(list)
+            return (
+              <li key={index}>Hello</li>
+            )
+          })}
           <form className="example" onSubmit={submitHandler}>
             <input
               type="text"
