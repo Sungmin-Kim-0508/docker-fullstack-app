@@ -30,13 +30,13 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "docker-fullstack-app"
-  env: "DockerFullstackApp-env"
+  app: "docker-fullstack-app1"
+  env: "DockerFullstackApp1-env"
 
   bucket_name: "elasticbeanstalk-us-east-2-789250854600"
 
   # 어플리케이션의 이름과 동일
-  bucket_path: "docker-fullstack-app"
+  bucket_path: "docker-fullstack-app1"
 
   # 어떤 브랜치에 Push를 할 때 AWS에 배포를 할 것인지.
   on:
